@@ -6,3 +6,7 @@
   border: 1px solid #90caf9;
   background-color: rgba(255, 255, 255, 0.95);
 }
+
+.error-message{
+  color:red;
+}
