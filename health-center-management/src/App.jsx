@@ -1,18 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
 import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
-import TakeAppointment from './pages/patient/TakeAppointment/TakeAppointment/'; 
-import AppointmentHistory from './pages/patient/AppointmentHistory/AppointmentHistory';
+import TakeAppointment from './pages/Patient/TakeAppointment/TakeAppointment/'; 
+import AppointmentHistory from './pages/Patient/AppointmentHistory/AppointmentHistory';
+import Dashboard from './pages/Patient/Dashboard/Dashboard';
 import './styles/global.css';
 import PrivateRoute from './components/Routes/PrivateRoute';
+import AuthContextProvider from './context/AuthContext';
 
 function App() {
 
 
   return (
-    <>
-    
+    <AuthContextProvider>
+
           <Routes>
+            
             <Route path='/' element={<Login />} />
 
             <Route path='/login' element={<Login />} />
@@ -34,10 +37,11 @@ function App() {
               </PrivateRoute>
               } />
 
-            
+              <Route path='/dashboard' element={<Dashboard/>}/>
+              
           </Routes>
 
-    </>
+    </AuthContextProvider>
   )
 }
 

@@ -3,6 +3,8 @@ import { TextField, Button, Box, Typography } from '@mui/material';
 import './LoginForm.css';
 import {useForm} from 'react-hook-form';
 import { setAuth } from '../../services/authService';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -19,10 +21,12 @@ export default function LoginForm() {
     mode:'onChange'
   });
 
+  const {user,setUser} = useContext(AuthContext);
   const handleFormSubmit = (data) => {
     if(data.password === fakeUser.password && data.email === fakeUser.email){
-      setAuth(data);
-      navigate('/appointments');
+      setAuth({email:data.email,role:''});
+      setUser({email:data.email,role:''});
+      navigate('/dashboard');
     } else {
       alert('Şifre ya da mail adresi hatalı');
     }
