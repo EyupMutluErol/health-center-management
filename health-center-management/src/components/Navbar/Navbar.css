@@ -1,0 +1,19 @@
+.toolbar{
+    display: flex;
+    justify-content: space-between;
+}
+.typography{
+    font-weight: bold;
+    color:'#1976d2'
+}
+.logo-avatar{
+    width: 32;
+    height: 32;
+}
+.avatar{
+    width: 32;
+    height: 32 
+}
+.typography-mail{
+    color: black;
+}
