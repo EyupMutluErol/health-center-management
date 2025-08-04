@@ -1,9 +1,10 @@
 import React from 'react'
+import TakeAppointmentForm from '../../../components/TakeAppointmentForm/TakeAppointmentForm'
 
 function TakeAppointment() {
   return (
     <div>
-      TakeAppointment
+      <TakeAppointmentForm/>
     </div>
   )
 }
