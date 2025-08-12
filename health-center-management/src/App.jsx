@@ -7,11 +7,13 @@ import Dashboard from './pages/Patient/Dashboard/Dashboard';
 import './styles/global.css';
 import PrivateRoute from './components/Routes/PrivateRoute';
 import AuthContextProvider from './context/AuthContext';
+import AppointmentContextProvider from './context/AppointmentContext';
 
 function App() {
 
 
   return (
+    <AppointmentContextProvider>
     <AuthContextProvider>
 
           <Routes>
@@ -42,6 +44,8 @@ function App() {
           </Routes>
 
     </AuthContextProvider>
+    </AppointmentContextProvider>
+
   )
 }
 

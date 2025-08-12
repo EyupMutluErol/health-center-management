@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     Box,
     Typography,
@@ -14,12 +14,18 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { AppointmentContext } from '../../context/AppointmentContext';
+import { setAppointmentsToLS } from '../../services/appointmentService';
 
 export default function TakeAppointmentForm() {
     const navigate = useNavigate();
-    const { control, handleSubmit, formState: {isValid } } = useForm();
+    const { control, handleSubmit, formState: { isValid } } = useForm();
+    const {appointments, setAppointments } = useContext(AppointmentContext);
 
-    const handleFormSubmit = () => {
+    const handleFormSubmit = (data) => {
+        const updated = [...appointments, data];
+        setAppointments(updated);
+        setAppointmentsToLS(updated);
         navigate('/history');
     }
     return (
@@ -131,6 +137,7 @@ export default function TakeAppointmentForm() {
 
                     {/* Açıklama */}
                     <TextField
+                        name='note'
                         label="Not (Opsiyonel)"
                         multiline
                         rows={3}

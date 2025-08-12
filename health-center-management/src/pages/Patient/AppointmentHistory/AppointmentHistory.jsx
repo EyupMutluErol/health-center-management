@@ -1,9 +1,10 @@
 import React from 'react'
+import Appointments from '../../../components/Appointments/Appointments'
 
 function AppointmentHistory() {
   return (
     <div>
-      AppointmentHistory
+      <Appointments/>
     </div>
   )
 }
