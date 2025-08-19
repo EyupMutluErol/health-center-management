@@ -20,10 +20,11 @@ import { setAppointmentsToLS } from '../../services/appointmentService';
 export default function TakeAppointmentForm() {
     const navigate = useNavigate();
     const { control, handleSubmit, formState: { isValid } } = useForm();
-    const {appointments, setAppointments } = useContext(AppointmentContext);
+    const { appointments, setAppointments } = useContext(AppointmentContext);
 
     const handleFormSubmit = (data) => {
         const updated = [...appointments, data];
+        console.log(data.note);
         setAppointments(updated);
         setAppointmentsToLS(updated);
         navigate('/history');
@@ -136,14 +137,23 @@ export default function TakeAppointmentForm() {
 
 
                     {/* Açıklama */}
-                    <TextField
-                        name='note'
-                        label="Not (Opsiyonel)"
-                        multiline
-                        rows={3}
-                        fullWidth
-                        sx={{ mb: 2 }}
+                    <Controller
+                        name="note"
+                        control={control}
+                        defaultValue=""
+                        render={({ field }) => (
+                            <TextField
+                                {...field}
+                                label="Not (Opsiyonel)"
+                                multiline
+                                rows={3}
+                                fullWidth
+                                sx={{ mb: 2}}
+                            />
+                        )}
                     />
+
+
 
                     {/* Buton */}
                     <Button
